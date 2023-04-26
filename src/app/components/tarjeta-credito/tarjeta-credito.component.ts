@@ -28,6 +28,11 @@ export class TarjetaCreditoComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerTarjetas();
   }
+/**
+ * This function retrieves a list of cards from a service and stores them in a variable, but only if a
+ * token is present in local storage.
+ * @returns If there is no "token" in the localStorage, then nothing is returned.
+ */
 
   obtenerTarjetas() {
     if(!localStorage.getItem("token")){
@@ -41,6 +46,10 @@ export class TarjetaCreditoComponent implements OnInit {
     })
   
   }
+
+/**
+ * This function saves or updates a credit card in a database using data from a form.
+ */
 
   guardarTarjeta() {
 
@@ -82,6 +91,11 @@ export class TarjetaCreditoComponent implements OnInit {
    
   }
 
+/**
+ * This function deletes a card by calling a service and displays a success message using Toastr.
+ * @param {number} id - a number representing the ID of the card to be deleted.
+ */
+
   eliminarTarjeta(id: number) {
     this._tarjetaService.deleteTarjeta(id).subscribe(data => {
       this.toastr.error('La tarjeta fue eliminada con exito!','Tarjeta eliminada');
@@ -91,6 +105,14 @@ export class TarjetaCreditoComponent implements OnInit {
     })
 
   }
+
+  
+/**
+ * The function "editarTarjeta" edits a credit card by populating a form with its existing values.
+ * @param {any} tarjeta - The parameter "tarjeta" is an object that represents a credit card. It
+ * contains properties such as "id", "titular" (cardholder name), "numeroTarjeta" (card number),
+ * "fechaExpiracion" (expiration date), and "cvv" (security code).
+ */
 
   editarTarjeta(tarjeta: any) {
     this.accion = 'Editar';

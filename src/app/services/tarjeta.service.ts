@@ -10,6 +10,9 @@ export class TarjetaService {
   private myApiUrl = 'api/tarjeta/'
 
   constructor(private http: HttpClient) { }
+  
+/* This is a service class in an Angular application that provides methods for performing CRUD (Create,
+Read, Update, Delete) operations on a resource called "tarjeta". */
 
   getListTarjetas(): Observable<any> {
     return this.http.get(this.myAppUrl + this.myApiUrl);
